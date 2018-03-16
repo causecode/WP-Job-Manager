@@ -26,17 +26,15 @@ do_action( 'single_job_listing_meta_before' ); ?>
 	<?php do_action( 'single_job_listing_meta_start' ); ?>
 
 	<?php if ( get_option( 'job_manager_enable_types' ) ) { ?>
-		<?php $types = wpjm_get_the_job_types(); ?>
-		<?php if ( ! empty( $types ) ) : foreach ( $types as $type ) : ?>
+	<?php $types = wpjm_get_the_job_types(); ?>
+	<?php if ( ! empty( $types ) ) : foreach ( $types as $type ) : ?>
 
-			<li class="job-type <?php echo esc_attr( sanitize_title( $type->slug ) ); ?>"><?php echo esc_html( $type->name ); ?></li>
+		<li class="job-type job-type-in-single-list <?php echo esc_attr( sanitize_title( $type->slug ) ); ?>"><?php echo esc_html( $type->name ); ?> &nbsp;-</li>
 
 		<?php endforeach; endif; ?>
 	<?php } ?>
 
 	<li class="location"><?php the_job_location(); ?></li>
-
-	<li class="date-posted"><?php the_job_publish_date(); ?></li>
 
 	<?php if ( is_position_filled() ) : ?>
 		<li class="position-filled"><?php _e( 'This position has been filled', 'wp-job-manager' ); ?></li>
